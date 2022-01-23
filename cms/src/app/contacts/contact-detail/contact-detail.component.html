@@ -7,7 +7,10 @@
     </div>
     <div class="row">
       <div class="col-xs-4">
-
+        <img
+          [src]="contact.imageUrl"
+          alt="{{ contact.name }}"
+          class="img-responsive">
       </div>
       <div class="col-xs-8 text-right">
         <div class="col-xs-6">
@@ -23,10 +26,10 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
-        <strong>Email: </strong>
+        <strong>Email: {{ contact.email }}</strong>
       </div>
       <div class="col-xs-12">
-        <strong>Phone: </strong>
+        <strong>Phone: {{ contact.phone }}</strong>
       </div>
     </div>
   </div>
