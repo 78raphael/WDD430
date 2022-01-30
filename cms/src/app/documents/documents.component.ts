@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent implements OnInit {
+  selectedDocument: Document;
 
-  constructor() { }
+  constructor() {  }
 
   ngOnInit(): void {
   }
