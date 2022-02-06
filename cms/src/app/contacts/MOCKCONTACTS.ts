@@ -277,5 +277,13 @@ export const MOCKCONTACTS: Contact[] = [
       group: null
     }
   ]
-  }
+  },
+  {
+    id: '19',
+    name: 'Jay Johnson',
+    email: 'joh18157@byui.edu',
+    phone: '801-555-5689',
+    imageUrl: '../../assets/images/jay.jpg',
+    group: null
+  },
 ];

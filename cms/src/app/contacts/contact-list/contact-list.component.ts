@@ -16,9 +16,4 @@ export class ContactListComponent implements OnInit {
     this.contacts = this.contactService.getContacts();
   }
 
-  // onSelected(contact: Contact) {
-  //   console.log("contact-list onSelected: ", contact);
-  //   this.contactService.contactSelectedEvent.emit(contact);
-  // }
-
 }
