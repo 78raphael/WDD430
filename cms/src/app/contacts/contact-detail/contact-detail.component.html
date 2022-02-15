@@ -14,10 +14,10 @@
       </div>
       <div class="col-xs-8 text-right">
         <div class="col-xs-6">
-          <button type="button" class="btn btn-primary">Edit</button>
+          <a class="btn btn-primary" [routerLink]="['edit']" >Edit</a>
         </div>
         <div class="col-xs-6">
-          <button type="button" class="btn btn-danger">Delete</button>
+          <a class="btn btn-danger" (click)="onDelete()" >Delete</a>
         </div>
   
       </div>
