@@ -49,8 +49,6 @@ export class DocumentEditComponent implements OnInit {
     let value = form.value;
     let newDocument = new Document("0", value.name, value.description, value.url, []);
 
-    // console.log('newDocument: ', newDocument);
-
     if(!this.editMode) {
       this.documentService.addDocument(newDocument);
     } else {
