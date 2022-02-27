@@ -47,8 +47,9 @@ export class DocumentService {
 
   addDocument(newDocument: Document) {
     if(!newDocument) return;
+    this.maxDocumentId++;
 
-    newDocument.id = String(this.maxDocumentId++);
+    newDocument.id = String(this.maxDocumentId);
     this.documents.push(newDocument);
 
     let documentsListClone = this.documents.slice();
