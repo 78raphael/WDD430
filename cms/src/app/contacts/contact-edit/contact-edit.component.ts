@@ -60,7 +60,7 @@ export class ContactEditComponent implements OnInit {
       this.contactService.updateContact(this.originalContact, newContact);
     }
 
-    this.router.navigate(['/contats'], {relativeTo: this.route});
+    this.router.navigate(['/contacts'], {relativeTo: this.route});
 
   }
 
