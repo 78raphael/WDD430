@@ -35,6 +35,8 @@ export class MessageService {
               return 0;
             });
 
+            console.log("Messages: ", this.messages);
+
             let messagesListClone = this.messages.slice();
             this.messageChangedEvent.next(messagesListClone);
           },
