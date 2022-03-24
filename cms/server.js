@@ -1,5 +1,6 @@
 // Get dependencies
 const express = require('express');
+var mongoose = require('mongoose');
 const path = require('path');
 var http = require('http');
 var bodyParser = require('body-parser');
@@ -12,7 +13,6 @@ const messageRoutes = require('./server/routes/messages');
 const contactRoutes = require('./server/routes/contacts');
 const documentsRoutes = require('./server/routes/documents');
  
-
 var app = express(); // create an instance of express
 
 // Tell express to use the following parsers for POST data
@@ -47,6 +47,16 @@ app.use('/', index);
 app.use('/messages', messageRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/documents', documentsRoutes);
+
+mongoose.connect('mongodb://localhost:27017/cms',
+  { useNewUrlParser: true }, (err, res) => {
+    if(err) {
+      console.log('Connection Failed: ', err);
+    } else {
+      console.log('Connected to database!');
+    }
+  }
+);
 
 // Tell express to map all other non-defined routes back to the index page
 app.get('*', (req, res) => {
