@@ -6,10 +6,12 @@ var router = express.Router();
 // GET
 router.get('/', (req, res, next) => {
   Document.find()
-  .then(documents => {
+  .then(docs => {
+    console.log("inside documents.js");
+    console.log('Documents: ', docs);
     res.status(200).json({
       message: 'Documents fetched successfully!',
-      documents: documents
+      documents: docs
     });
   })
   .catch(error => {
@@ -35,7 +37,7 @@ router.post('/', (req, res, next) => {
     .then(createdDocument => {
       res.status(201).json({
         message: 'Document added successfully',
-        document: createdDocument
+        documents: createdDocument
       });
     })
     .catch(error => {

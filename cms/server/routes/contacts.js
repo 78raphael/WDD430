@@ -28,7 +28,8 @@ router.post('/', (req, res, next) => {
   const contact = new Contact({
     id: maxContactId,
     name: req.body.name,
-    description: req.body.description,
+    email: req.body.email,
+    phone: req.body.phone,
     url: req.body.url
   });
 
@@ -52,7 +53,8 @@ router.put('/:id', (req, res, next) => {
   Contact.findOne({ id: req.params.id })
     .then(contact => {
       contact.name = req.body.name;
-      contact.description = req.body.description;
+      contact.email = req.body.email;
+      contact.phone = req.body.phone;
       contact.url = req.body.url;
 
       Contact.updateOne({ id: req.params.id }, contact)

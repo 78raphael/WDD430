@@ -23,7 +23,7 @@ export class MessageListComponent implements OnInit {
 
   onAddMessage(message: Message)  {
     this.messages.push(message);
-    console.log('message: ', message);
+    // console.log('message: ', message);
   }
 
 }

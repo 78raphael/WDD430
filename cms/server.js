@@ -15,6 +15,16 @@ const documentsRoutes = require('./server/routes/documents');
  
 var app = express(); // create an instance of express
 
+mongoose.connect('mongodb+srv://joh18157:D3lightfuL@daredevil3.4cper.mongodb.net/cms?retryWrites=true&w=majority',
+  { useNewUrlParser: true }, (err, res) => {
+    if(err) {
+      console.log('Connection Failed: ', err);
+    } else {
+      console.log('Connected to Mongo Atlas database!');
+    }
+  }
+);
+
 // Tell express to use the following parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -47,16 +57,6 @@ app.use('/', index);
 app.use('/messages', messageRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/documents', documentsRoutes);
-
-mongoose.connect('mongodb://localhost:27017/cms',
-  { useNewUrlParser: true }, (err, res) => {
-    if(err) {
-      console.log('Connection Failed: ', err);
-    } else {
-      console.log('Connected to database!');
-    }
-  }
-);
 
 // Tell express to map all other non-defined routes back to the index page
 app.get('*', (req, res) => {

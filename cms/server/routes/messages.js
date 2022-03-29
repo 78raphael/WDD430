@@ -26,16 +26,15 @@ router.post('/', (req, res, next) => {
 
   const message = new Message({
     id: maxMessageId,
-    name: req.body.name,
-    description: req.body.description,
-    url: req.body.url
+    subject: req.body.subject,
+    msgText: req.body.msgText
   });
 
   message.save()
     .then(createdMessage => {
       res.status(201).json({
       message: 'Message added successfully',
-      document: createdMessage
+      messages: createdMessage
       });
     })
     .catch(error => {
@@ -50,14 +49,14 @@ router.post('/', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Message.findOne({ id: req.params.id })
     .then(message => {
-      message.name = req.body.name;
-      message.description = req.body.description;
-      message.url = req.body.url;
+      message.subject = req.body.subject,
+      message.msgText = req.body.msgText
 
       Message.updateOne({ id: req.params.id }, message)
         .then(result => {
           res.status(204).json({
-            message: 'Message updated successfully'
+            message: 'Message updated successfully',
+            messages: result
           })
         })
         .catch(error => {
@@ -82,7 +81,8 @@ router.delete("/:id", (req, res, next) => {
       Message.deleteOne({ id: req.params.id })
         .then(result => {
           res.status(204).json({
-            message: "Message deleted successfully"
+            message: "Message deleted successfully",
+            messages: result
           });
         })
         .catch(error => {

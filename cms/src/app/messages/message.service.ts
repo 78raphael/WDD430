@@ -19,15 +19,15 @@ export class MessageService {
   getMessages() {
     try {
       return this.http
-        .get<Message[]>('https://wdd430-angular-cms-default-rtdb.firebaseio.com/messages.json',
+        .get<Message[]>('http://localhost:3000/messages/',
           {
-            headers: new HttpHeaders({ 'Custom-Header': 'Messages' })
+            headers: new HttpHeaders({ 'Content-Type': 'application/json' })
           }
         )
         .subscribe({
           next:
           (messages: Message[]) => {
-            this.messages = messages;
+            this.messages = messages['messages'];
             this.maxMessageId = this.getMaxId();
             this.messages.sort((a, b) => {
               if(a < b) return -1;
@@ -35,7 +35,7 @@ export class MessageService {
               return 0;
             });
 
-            console.log("Messages: ", this.messages);
+            // console.log("Messages: ", this.messages);
 
             let messagesListClone = this.messages.slice();
             this.messageChangedEvent.next(messagesListClone);
@@ -50,41 +50,28 @@ export class MessageService {
     }
   }
 
-  storeMessages()  {
-    try {
-      let stringMessages = JSON.stringify(this.messages);
-
-      this.http.put('https://wdd430-angular-cms-default-rtdb.firebaseio.com/messages.json',
-        stringMessages,
-        {
-          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-        })
-        .subscribe({
-          next:
-          () => {
-            let messagesListClone = this.messages.slice();
-            this.messageChangedEvent.next(messagesListClone);
-          },
-          error:
-          (error: any) => {
-            console.log("Error: ", error);
-          }
-        });
-
-
-    } catch(error)  {
-      console.log('Error (storeMessages): ', error);
+  addMessage(message: Message)  {
+    if (!message) {
+      return;
     }
-  }
 
-  addMessage(newMessage: Message)  {
-    if(!newMessage) return;
-    this.maxMessageId++;
+    // make sure id of the new Document is empty
+    message.id = '';
 
-    newMessage.id = String(this.maxMessageId);
-    this.messages.push(newMessage);
+    // console.log('addMessage: ', this.messages);
 
-    this.storeMessages();
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    // add to database
+    this.http.post<{ message: Message }>('http://localhost:3000/messages/',
+      message,
+      { headers: headers })
+      .subscribe(
+        (responseData) => {
+          this.messages.push(responseData.message);
+          // this.sortAndSend();
+        }
+      );
   }
 
   getMaxId(): number  {
