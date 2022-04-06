@@ -1,0 +1,81 @@
+import { Music } from './music.model';
+
+export const MOCKMUSIC: any[] = [
+  {
+    id: '1',
+    title: 'I\'m Eighteen',
+    album: 'Love It To Death',
+    artist: 'Alice Cooper',
+    lyricsId: '',
+  },
+  {
+    id: '2',
+    title: 'Tiny Dancer',
+    album: 'Madman Across the Water',
+    artist: 'Elton John',
+    lyricsId: '',
+  },
+  {
+    id: '3',
+    title: 'The New Pollution',
+    album: 'Odelay',
+    artist: 'Beck',
+    lyricsId: '',
+  },
+  {
+    id: '4',
+    title: 'One Piece At A Time',
+    album: 'One Piece At A Time',
+    artist: 'Johnny Cash',
+    lyricsId: '',
+  },
+  {
+    id: '5',
+    title: 'King of the Road',
+    album: 'The Return of Roger Miller',
+    artist: 'Roger Miller',
+    lyricsId: '',
+  },
+  {
+    id: '6',
+    title: 'Points of Authority',
+    album: 'Hybrid Theory',
+    artist: 'Linkin Park',
+    lyricsId: '',
+  },
+  {
+    id: '7',
+    title: 'Radio Ga Ga',
+    album: 'The Works',
+    artist: 'Queen',
+    lyricsId: '',
+  },
+  {
+    id: '8',
+    title: 'Got the Time',
+    album: 'Persistence of Time',
+    artist: 'Anthrax',
+    lyricsId: '',
+  },
+  {
+    id: '9',
+    title: 'My Favorite Accident',
+    album: 'I am the Movie',
+    artist: 'Motion City Soundtrack',
+    lyricsId: '',
+  },
+  {
+    id: '10',
+    title: 'No One Sleeps When I\'m Awake',
+    album: 'Crossing the Rubicon',
+    artist: 'The Sounds',
+    lyricsId: '',
+  },
+  // {
+  //   id: '',
+  //   title: '',
+  //   album: '',
+  //   artist: '',
+  //   lyricsId: '',
+  // },
+];

@@ -7,3 +7,11 @@
     --silver: #E1E8EB;
     --white: #FFFFFF;
 ****************************** */
+
+.navbar  {
+  background-color: var(--yellow);
+}
+
+.navbar-brand {
+  color: var(--black);
+}
