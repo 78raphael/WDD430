@@ -20,6 +20,7 @@ export class MusicListComponent implements OnInit {
   
     this.subscription = this.musicService.musicChangedEvent.subscribe(
       (musicList: Music[]) => {
+        console.log('music-list: ', musicList);
         this.allMusic = musicList;
       }
     );

@@ -9,7 +9,7 @@ import { MusicService } from './music.service';
   providers: [MusicService]
 })
 export class MusicComponent implements OnInit {
-  selectedMusic!: Music;
+  selectedMusic: Music;
 
   constructor(private musicService: MusicService) { }
 
